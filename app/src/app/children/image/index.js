@@ -1,16 +1,15 @@
-import React from 'react'
-import styles from './styles'
-import {getCaptionFromEdges} from './helpers'
+import React from "react";
+import styled from "styled-components";
 
-const Image = (props) => {
-  const {data} = props
-  return (
-    <img
-      src={data.display_url}
-      style={styles}
-      alt={getCaptionFromEdges(data.edge_media_to_caption)}
-    />
-  )
-}
+const StyledImage = styled.img`
+  max-width: 100%;
+  height: auto;
+  @media (max-height: 707px) {
+    height: 95%;
+    width: auto;
+  }
+`;
 
-export default Image
+export const Image = ({ imageSrc, caption }) => {
+  return <StyledImage src={imageSrc} alt={caption} />;
+};

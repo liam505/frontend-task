@@ -1,8 +1,16 @@
-import React from 'react'
-import LikedIcon from './children/liked_icon'
+import React, { useState } from "react";
 
-const LikeButton = (props) => {
-  return <LikedIcon />
-}
+import { LikedIcon, UnlikedIcon } from "./children";
 
-export default LikeButton
+export const LikeButton = ({ initalValue, big }) => {
+  const size = big ? "2rem" : "1rem";
+  const [isLiked, setIsLiked] = useState(initalValue || false);
+  const handleClick = () => {
+    setIsLiked((prev) => !prev);
+  };
+  return (
+    <div onClick={handleClick}>
+      {isLiked ? <LikedIcon size={size} /> : <UnlikedIcon size={size} />}
+    </div>
+  );
+};
